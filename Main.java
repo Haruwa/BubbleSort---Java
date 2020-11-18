@@ -3,30 +3,37 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-	    String Qty;
-	    int totalNumbers;
+	    String Qty, opt;
+	    int totalNumbers, optInt;
 	
-	    Scanner numberRegister = new Scanner(System.in);
+	    Scanner register = new Scanner(System.in);
 	    System.out.println("Quantos números serão cadastrados?");
-	    Qty = numberRegister.nextLine();
+	    Qty = register.nextLine();
 	    totalNumbers = Integer.valueOf(Qty);
 	
 	    int number[] = new int[totalNumbers];
 	
-	    BubbleController.registerNumbers(totalNumbers, numberRegister, number);
+	    BubbleController.registerNumbers(totalNumbers, register, number);
 
         BubbleView.listNumbers(totalNumbers, number);
 
-	    for (int bubbleCounterDown = totalNumbers-1; bubbleCounterDown > 0; bubbleCounterDown--){
-            for(int bubbleCounterUp = 0; bubbleCounterUp < bubbleCounterDown; bubbleCounterUp++){
-                int aux;
-                if(number[bubbleCounterUp] > number[bubbleCounterUp + 1]){
-                    aux = number[bubbleCounterUp];
-                    number[bubbleCounterUp] = number[bubbleCounterUp + 1];
-                    number[bubbleCounterUp + 1] = aux;
-                }
-            }
-         }
+
+        System.out.println("Deseja ordenar de forma crescente ou decrescente?");
+        System.out.println("-------------------------------------------------");
+        System.out.println("1 - Crescente");
+        System.out.println("2 - Decrescente");
+        opt = register.nextLine();
+        optInt = Integer.valueOf(opt);
+
+            if (optInt == 1) {
+                BubbleController.orderByAsc(totalNumbers, number);
+            } else if (optInt == 2) {
+                BubbleController.orderByDesc(totalNumbers, number);
+            } else {
+                System.out.println("Favor digitar um código válido.");
+            } 
+
+
         
         BubbleView.listNumbers(totalNumbers, number);
 

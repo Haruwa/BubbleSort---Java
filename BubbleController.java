@@ -10,5 +10,32 @@ public class BubbleController {
 	        number[counterUp] = Integer.valueOf(s_number);
 	    }
 	}
-    
+
+	static void orderByAsc(int totalNumbers, int[] number) {
+	    for (int bubbleCounterDown = totalNumbers-1; bubbleCounterDown > 0; bubbleCounterDown--){
+	        for(int bubbleCounterUp = 0; bubbleCounterUp < bubbleCounterDown; bubbleCounterUp++){
+	            int aux;
+	            if(number[bubbleCounterUp] > number[bubbleCounterUp + 1]){
+	                aux = number[bubbleCounterUp];
+	                number[bubbleCounterUp] = number[bubbleCounterUp + 1];
+	                number[bubbleCounterUp + 1] = aux;
+	            }
+	        }
+	     }
+	}
+
+	static void orderByDesc(int totalNumbers, int[] number) {
+	    for (int bubbleCounterDown = totalNumbers-1; bubbleCounterDown > 0; bubbleCounterDown--){
+	        for(int bubbleCounterUp = 0; bubbleCounterUp < bubbleCounterDown; bubbleCounterUp++){
+	            int aux;
+	            if(number[bubbleCounterUp] < number[bubbleCounterUp + 1]){
+	                aux = number[bubbleCounterUp];
+	                number[bubbleCounterUp] = number[bubbleCounterUp + 1];
+	                number[bubbleCounterUp + 1] = aux;
+	            }
+	        }
+	     }
+	}
+
+
 }
